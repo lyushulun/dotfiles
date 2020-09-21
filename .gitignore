@@ -1,0 +1,12 @@
+# We can create a .gitignore file in the specific repository's root directory
+# to tell Git which files and directories to ignore when we make a commit.
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
