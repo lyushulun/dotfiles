@@ -6,7 +6,7 @@
 " A delightful and minimal vim config. file for the full-stack dev.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 1. Manage the vim plugins using vim-plug.
+" 1. Manage the vim plugins using Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible		" Make Vim behave in a more useful way
 				" Required
@@ -22,6 +22,7 @@ Plugin 'VundleVim/Vundle.vim'	" Let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox' 
+
 call vundle#end()
 filetype plugin indent on	" ... and enable filetype detection
 				" Required
@@ -99,5 +100,5 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 4. Config plugins
+" 4. Vim scripts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
