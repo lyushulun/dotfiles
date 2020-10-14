@@ -1,47 +1,52 @@
 "
-"    ^    Lyu Shulun
-"  < * >  core.dev.lyu@icloud.com
-"    v    https://lyu-shulun.com
+"   ***   Lyu Shulun
+"  *****  core.dev.lyu@icloud.com
+"   ***   https://lyu-shulun.com
 "
-" A delightful and minimal vim config. file for the full-stack dev.
+" A delightful and minimal vim conf file for the full-stack dev.
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 1. Manage the vim plugins using Vundle
+" 		1. Manage the vim plugins using Vundle			     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible		" Make Vim behave in a more useful way
-				" Required
+
+set nocompatible		" Make Vim behave in a more useful way.
+				" Required.
 
 filetype off			" Reset filetype detection first ...
-				" Required
+				" Required.
 
 " Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+
 call vundle#begin('$HOME/.vim/vundle-plugins')
 
 Plugin 'VundleVim/Vundle.vim'	" Let Vundle manage Vundle, required
 Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox' 
 
 call vundle#end()
+
 filetype plugin indent on	" ... and enable filetype detection
 				" Required
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 2. General settings
+" 			2. General settings				     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nobackup			" Backup current file ...
-set writebackup			" ... Deleted afterwards
-set swapfile			" Store the changes you've made to the buffer
-set directory^=$HOME/.vim/tmp/swap//	" Aggregate all swap files in one place
-set autoread                    " Automatically read changed files
-set autoindent                  " Enabile Autoindent
+
+set nobackup			" Stop annoying backup file.
+set writebackup			" Backup file, and delete it after save sucessfully.
+set swapfile			" Store the changes you've made to the buffer.
+set directory^=$HOME/.vim/tmp/swap//	" Aggregate all swap files in one place.
+set autoread                    " Automatically read changed files.
+set autoindent                  " Enabile Autoindent.
 set autowrite                   " Automatically save before :next, :make etc.
-set hidden                      " Buffer should still exist if window is closed
+set hidden                      " Buffer should still exist if window is closed.
 
 set fileencodings=ucs-bom,utf-8,gb2312,gbk,gb18030,default,latin1
-set fileformats=unix,dos,mac	" unix, osx: LF; dos: CR LF
-set textwidth=0
+set fileformats=unix,dos,mac	" unix, osx: LF; dos: CR LF.
+set textwidth=0			" Set textwidth by hand.
 
 syntax enable
 set ruler
@@ -78,10 +83,17 @@ if has('persistent_undo')
   set undodir=$HOME/.vim/tmp/undo//
 endif
 
+" Use 8-spaces width Tab.
+" Use Tab character instead of spaces.
+set noexpandtab
+set tabstop=8			" Number of spaces that a Tab counts for.
+set softtabstop=8		" Number of spaces that a Tab counts for.
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 3. Remap the keystroke and config the plugins.
+" 	     3. Remap the keystroke and config the plugins.		     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let mapleader = ","
 
 nnoremap <leader>w :w<CR>
@@ -96,9 +108,11 @@ map <C-p> :cprevious<CR>
 nnoremap <C-q> :cclose<CR>
 
 " These will go to the nextcfound characters and center it
-nnoremap n nzzzv
-nnoremap N Nzzzv
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 4. Vim scripts
+" 			4. Vim scripts  				     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
