@@ -6,27 +6,25 @@
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"               1. Manage the vim plugins using Vundle                       "
+"               1. Manage the vim plugins using vim-plug                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible    " Make Vim behave in a more useful way.
-                    " Required.
-
 filetype off        " Reset filetype detection first ...
-                    " Required.
 
-" Set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin('$HOME/.vim/vundle-plugins')
+" Make sure you use single quotes.
 
-Plugin 'VundleVim/Vundle.vim'   " Let Vundle manage Vundle, required
-Plugin 'tpope/vim-fugitive'
-Plugin 'morhetz/gruvbox' 
+" Retro groove color scheme for Vim.
+Plug 'morhetz/gruvbox'
 
-call vundle#end()
+" Initialize plugin system. 
+call plug#end()
 
 filetype plugin indent on   " ... and enable filetype detection
-                            " Required
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,6 +122,8 @@ nnoremap <C-q> :cclose<CR>
 " nnoremap n nzzzv
 " nnoremap N Nzzzv
 
+" Configurate vim-plug
+let g:plug_window = "vertical topleft new"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           4. Vim scripts                                   "
