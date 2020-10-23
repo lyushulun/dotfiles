@@ -21,6 +21,30 @@ call plug#begin('~/.vim/plugged')
 " Retro groove color scheme for Vim.
 Plug 'morhetz/gruvbox'
 
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command.
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" Multiple commands.
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+
+" Load when clojure file is opened.
+Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
+
+" On-demand loading on both conditions.
+Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
+
+" Code to execute when the plugin is lazily loaded on demand.
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+autocmd! User goyo.vim echom 'Goyo is now loaded!'
+
+" There are some plugins that require extra steps after installation or
+" update.
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+
+" funzzy find.
+Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+
 " Initialize plugin system. 
 call plug#end()
 
