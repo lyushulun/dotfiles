@@ -69,6 +69,7 @@ set fileencodings=ucs-bom,utf-8,gb2312,gbk,gb18030,default,latin1
 set textwidth=0         " Set textwidth by hand.
 set fileformats=unix,dos,mac    " unix, osx: LF; dos: CR LF.
 set autoindent
+set smartindent         " Do smart autoindenting when starting a new line.
 
 syntax enable
 set ruler
