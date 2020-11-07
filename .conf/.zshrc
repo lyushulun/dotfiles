@@ -82,8 +82,10 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 # node@12
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 
- #You may need to manually set your language environment
+# You may need to manually set your language environment
 export LANG=en_US.UTF-8
+
+export EDITOR=vim
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -105,3 +107,5 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="/usr/local/sbin:$PATH"

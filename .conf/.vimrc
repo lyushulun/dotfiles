@@ -21,8 +21,12 @@ call plug#begin('~/.vim/plugged')
 " Retro groove color scheme for Vim.
 Plug 'morhetz/gruvbox'
 
+" The NERDTree is a file system explorer for Vim.
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command.
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" A plugin of NERDTree shoing git status flags.
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Multiple commands.
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
@@ -44,6 +48,12 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 " funzzy find.
 Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+
+" LaTex plugin
+" Plug 'lervag/vimtex'
+
+" A fancy start screen for Vim.
+Plug 'mhinz/vim-startify'
 
 " Initialize plugin system. 
 call plug#end()
@@ -149,6 +159,10 @@ nnoremap <C-q> :cclose<CR>
 
 " Configurate vim-plug
 let g:plug_window = "vertical topleft new"
+
+" Configurate NERDTree
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           4. Vim scripts                                   "
