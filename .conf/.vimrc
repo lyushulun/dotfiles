@@ -75,7 +75,8 @@ set autoread            " Automatically read changed files.
 set autowrite           " Automatically save before :next, :make etc.
 set hidden              " Buffer should still exist if window is closed.
 
-set fileencodings=ucs-bom,utf-8,gb2312,gbk,gb18030,default,latin1
+set encoding=utf-8      " Character encoding used inside Vim.
+set fileencodings=ucs-bom,utf-8,gb18030,default,latin1
                         " A list of character encodings is used to set the 
                         " fileencoding value by Vim when read a new file.
 set textwidth=0         " Set textwidth by hand.
@@ -136,6 +137,9 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :wq<CR>
 inoremap <leader>w <ESC>:w<CR>
 inoremap <leader>q <ESC>:wq<CR>
+
+" Toggle paste mode.
+" nnoremap 
 
 " Jump to next error with CTRL-n and previous error with CTRL-p
 " Close the quickfix window with CTRL-q
