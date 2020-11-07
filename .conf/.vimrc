@@ -8,6 +8,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               1. Manage the vim plugins using vim-plug                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible    " Make Vim behave in a more useful way.
 filetype off        " Reset filetype detection first ...
 
@@ -32,21 +33,21 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " Load when clojure file is opened.
-Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
+" Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
 
 " On-demand loading on both conditions.
-Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
+" Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
 
 " Code to execute when the plugin is lazily loaded on demand.
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 " autocmd! User goyo.vim echom 'Goyo is now loaded!'
 
 " There are some plugins that require extra steps after installation or
 " update.
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
-" funzzy find.
+" Fuzzy finding program.
 Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
 
 " LaTex plugin
@@ -59,7 +60,7 @@ Plug 'mhinz/vim-startify'
 call plug#end()
 
 filetype plugin indent on   " ... and enable filetype detection
-
+syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       2. General settings                                  "
@@ -70,18 +71,18 @@ set writebackup         " Backup file, and delete it after save sucessfully.
 set swapfile            " Store the changes you've made to the buffer.
 set directory^=$HOME/.vim/tmp/swap//    " Aggregate all swap files in one place.
 set autoread            " Automatically read changed files.
+                        " After back to buffer, you should :e .
 set autowrite           " Automatically save before :next, :make etc.
 set hidden              " Buffer should still exist if window is closed.
 
 set fileencodings=ucs-bom,utf-8,gb2312,gbk,gb18030,default,latin1
-                        " A list of character encodings used to edit an
-                        " existing file.
+                        " A list of character encodings is used to set the 
+                        " fileencoding value by Vim when read a new file.
 set textwidth=0         " Set textwidth by hand.
-set fileformats=unix,dos,mac    " unix, osx: LF; dos: CR LF.
+set fileformats=unix,dos    " unix, osx: LF; dos: CR LF; ox 9-: CR.
 set autoindent
 set smartindent         " Do smart autoindenting when starting a new line.
 
-syntax enable
 set ruler
 set nonumber
 set showcmd
@@ -118,23 +119,12 @@ endif
 
 " One indent == One tab key (Use spaces instead of tab characters)
 " One indent == 4 spaces
-set tabstop=4       " The width of a hard tabstop measured in "spaces"
-            " - effectively the (maximum) width of an actual tab
-            " character.
-set shiftwidth=4    " The size of an "indent". If your code base indents
-            " with tab characters then you want 'shiftwidth' to
-            " equal the number of tab characters times 'tabstop'.
-set softtabstop=0
-set expandtab       " Enabling this will make the tab key (insert mode)
-            " insert spaces instead of tab characters.
-set smarttab
-
 set tabstop=4       " Numbers of spaces that a tab counts for.
 set softtabstop=0   " Turn off this feature.
 set expandtab       " Use spaces instead of tab characters.
 set shiftwidth=4    " One indent equals to 4 spaces (that also means one indent
                     " equals to one tab length.
-set smarttab        " Discover?
+set smarttab        " Inserts blanks according to other places.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               3. Remap the keystroke and config the plugins.               "
@@ -149,11 +139,11 @@ inoremap <leader>q <ESC>:wq<CR>
 
 " Jump to next error with CTRL-n and previous error with CTRL-p
 " Close the quickfix window with CTRL-q
-map <C-n> :cnext<CR>
-map <C-p> :cprevious<CR>
-nnoremap <C-q> :cclose<CR>
+" map <C-n> :cnext<CR>
+" map <C-p> :cprevious<CR>
+" nnoremap <C-q> :cclose<CR>
 
-" These will go to the nextcfound characters and center it
+" These will go to the next found characters and center it
 " nnoremap n nzzzv
 " nnoremap N Nzzzv
 
@@ -163,6 +153,10 @@ let g:plug_window = "vertical topleft new"
 " Configurate NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+
+" Configurate vim-github-dashboard
+nnoremap <leader>d :GHDashboard
+nnoremap <leader>a :GHActivity
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           4. Vim scripts                                   "
