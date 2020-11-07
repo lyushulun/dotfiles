@@ -1,6 +1,6 @@
-"   ***   Lyu Shulun
-"  *****  core.dev.lyu@icloud.com
-"   ***   https://lyu-shulun.com
+" Name:     John Shulun Lyu
+" Email:    lyu@shulun-lyu.com
+" About:    https://shulun-lyu.com
 "
 " A delightful and minimal vim conf file for the full-stack dev.
 
