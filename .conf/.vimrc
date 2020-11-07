@@ -1,9 +1,9 @@
 " Name:     John Shulun Lyu
-" Email:    lyu@shulun-lyu.com
+" Email:    john@shulun-lyu.com
 " About:    https://shulun-lyu.com
 "
-" A delightful and minimal vim conf file for the full-stack dev.
-
+" A delightful and minimal vim conf file for the full-stack dev, especially
+" for Node.js development.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               1. Manage the vim plugins using vim-plug                     "
@@ -25,7 +25,7 @@ Plug 'morhetz/gruvbox'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command.
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" A plugin of NERDTree shoing git status flags.
+" A plugin of NERDTree showing git status flags.
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Multiple commands.
