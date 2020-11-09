@@ -3,7 +3,7 @@
 " About:    https://shulun-lyu.com
 "
 " A delightful and minimal vim conf file for the full-stack dev, especially
-" for Node.js development.
+" for Node.js and Python development.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               1. Manage the vim plugins using vim-plug                     "
@@ -12,16 +12,39 @@
 set nocompatible    " Make Vim behave in a more useful way.
 filetype off        " Reset filetype detection first ...
 
+" A minimalist Vim plugin manager: junegunn/vim-plug
+"
+" Pros.:
+" 1. On-demand loading for fater startup time
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+"
+" 2. Can review and rollback updates
+" 3. Branch/tag/commit support
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Plug 'fatih/vim-go', { 'tag': '*' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+"
+" 4. Post-update hooks
+" Plug '', { 'dir': '~/.fzf', 'do': './install --all' }
+"
+" 5. Support for externally managed plugins
+" Plug '~/my-prototype-plugin'
+
 " Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes.
 
+" 1. Colorscheme associated.
 " Retro groove color scheme for Vim.
 Plug 'morhetz/gruvbox'
 
+" A fancy start screen for Vim.
+Plug 'mhinz/vim-startify'
+
+" 2. File system explorer (directory hierarchies) associated.
 " The NERDTree is a file system explorer for Vim.
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command.
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -29,38 +52,37 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " A plugin of NERDTree showing git status flags.
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Multiple commands.
+" 3. Git, GitHub
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
-" Load when clojure file is opened.
+" 4. Find files
+" Fuzzy finding program.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" z. Others
 " Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
-
-" On-demand loading on both conditions.
 " Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
-
-" Code to execute when the plugin is lazily loaded on demand.
 " Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 " autocmd! User goyo.vim echom 'Goyo is now loaded!'
-
-" There are some plugins that require extra steps after installation or
-" update.
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
-
-" Fuzzy finding program.
-Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
-
-" LaTex plugin
 " Plug 'lervag/vimtex'
-
-" A fancy start screen for Vim.
-Plug 'mhinz/vim-startify'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plug 'fatih/vim-go', { 'tag': '*' }
+" Plug 'tpope/vim-sensible'
+" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Initialize plugin system. 
+" Automatically executes 'filetype plugin indent on' and 'syntax enable'.
 call plug#end()
 
-filetype plugin indent on   " ... and enable filetype detection
-syntax enable
+" filetype plugin indent on   " ... and enable filetype detection
+" syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       2. General settings                                  "
@@ -87,6 +109,7 @@ set smartindent         " Do smart autoindenting when starting a new line.
 set ruler
 set nonumber
 set showcmd
+set foldmethod=indent   " Lines with equal indent form a fold.
 set laststatus=0        " Never show extra status line below
 set showmode
 set noerrorbells        " No beeps
@@ -112,10 +135,12 @@ set smartcase           " ... but not it begins with upper case
 set background=dark
 colorscheme gruvbox
 
+set pastetoggle=<F2>    " Toggle paste mode by using F2
+
 " This enables us to undo files even if you exit Vim
 if has('persistent_undo')
-  set undofile
-  set undodir=$HOME/.vim/tmp/undo//
+    set undofile
+    set undodir=$HOME/.vim/tmp/undo//
 endif
 
 " One indent == One tab key (Use spaces instead of tab characters)
@@ -165,3 +190,22 @@ nnoremap <leader>a :GHActivity
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           4. Vim scripts                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
+" JSON formatter
+com! FormatJSON %!python3 -m json.tool
+
+" Auto insert file head data.
+func SetTitle()
+    if &filetype == 'python'
+        call setline(1, "\#!/usr/bin/env python")
+        call setline(2, "\# _*_ conding:utf-8 _*_")
+        normal G
+        normal o
+        normal o
+        call setline(5, "if __name__ == '__main__':")
+        call setline(6, "   pass")
+    endif
+endfunc
