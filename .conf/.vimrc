@@ -37,12 +37,19 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes.
 
-" 1. Colorscheme associated.
-" Retro groove color scheme for Vim.
+" 1. Appearence associated.
 Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
+Plug 'sickill/vim-monokai'
 
 " A fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
+
+" Plug 'vim-airline/vim-airline'
+
+Plug 'yggdroot/indentline'
 
 " 2. File system explorer (directory hierarchies) associated.
 " The NERDTree is a file system explorer for Vim.
@@ -58,6 +65,7 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 " 4. Find files
 " Fuzzy finding program.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 
 " z. Others
 " Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
@@ -179,9 +187,17 @@ inoremap <leader>q <ESC>:wq<CR>
 " Configurate vim-plug
 let g:plug_window = "vertical topleft new"
 
+" NERDTree
 " Configurate NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+
+let NERDTreeShowHidden=1
+" let NERDTreeIgnore = [
+            " \ '\.git$', '\.hg$', '\.svn$', '\.stversions$', '\.pyc$',
+            " \ '\.pyo$', '\.svn$', '\.swp$', '\.DS_Store$', '\.sass-cache$',
+            " \ '\__pycache__$', '\.egg-info$', '\.ropeproject$',
+            "\ ]
 
 " Configurate vim-github-dashboard
 nnoremap <leader>d :GHDashboard
