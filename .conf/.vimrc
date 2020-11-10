@@ -47,8 +47,6 @@ Plug 'sickill/vim-monokai'
 " A fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
 
-" Plug 'vim-airline/vim-airline'
-
 Plug 'yggdroot/indentline'
 
 " 2. File system explorer (directory hierarchies) associated.
@@ -64,8 +62,34 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " 4. Find files
 " Fuzzy finding program.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Most frequently used commands:
+" Files [PATH] (similar to :FZF)
+" Ag [PATTERN] (ALT-A to select all, ALT-D to deselect all)
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
+" Fuzzy file, butter, mru, tag, etc finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Quick find in a file.
+Plug 'easymotion/vim-easymotion'
+
+" 5. Edit
+" Add text-object: s (ds, cs, ys: add a surrounding)
+Plug 'tpope/vim-surround'
+
+" Find and repalce
+Plug 'brooth/far.vim'
+
+" Displays tags in a window, ordered by scope.
+Plug 'majutsushi/tagbar'
+
+" Highlight and navigate through different words in a buffer.
+Plug 'lfv89/vim-interestingwords'
+
+" Code complete
+Plug 'mattn/emmet-vim'
+Plug 'mattn/webapi-vim'
 
 " z. Others
 " Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
@@ -171,6 +195,11 @@ nnoremap <leader>q :wq<CR>
 inoremap <leader>w <ESC>:w<CR>
 inoremap <leader>q <ESC>:wq<CR>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Toggle paste mode.
 " nnoremap 
 
@@ -202,6 +231,29 @@ let NERDTreeShowHidden=1
 " Configurate vim-github-dashboard
 nnoremap <leader>d :GHDashboard
 nnoremap <leader>a :GHActivity
+
+" Basic options for ctrlp
+" Ref: https://www.github.com/ctrlpvim/ctrlp.vim
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'r'
+
+" vim-easymotion
+nmap ff <Plug>(easymotion-ss)
+
+" tag-bar
+nnoremap <leader>o :TagbarToggle<CR>
+
+" fzf.vim
+nnoremap <leader>f :Files .<CR>
+
+" deoplete.vim
+let g:deoplete#enable_at_startup = 1
+
+" emmet-vim
+let g:user_emmet_mode='inv'
+let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('$HOME/snippets_for_vim.json')), "\n"))
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           4. Vim scripts                                   "
