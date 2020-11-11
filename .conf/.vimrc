@@ -1,13 +1,14 @@
-" Name:     John Shulun Lyu
-" Email:    john@shulun-lyu.com
-" About:    https://shulun-lyu.com
-"
-" A delightful and minimal vim conf file for the full-stack dev, especially
-" for Node.js and Python development.
+" ===========================================================================
+" vimrc - a delightful and minima vim conf for the web dev.
+" Copyright (c) 2020 John Shulun Lyu & Contributers
+" Author: John Shulun Lyu <john@johnshulunlyu.com>
+" URL: https://github.com/johnshulun/dotfile
+" License: GPLv3
+" ===========================================================================
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"               1. Manage the vim plugins using vim-plug                     "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ===========================================================================
+"               1. Manage the vim plugins using vim-plug                     
+" ===========================================================================
 
 set nocompatible    " Make Vim behave in a more useful way.
 filetype off        " Reset filetype detection first ...
@@ -88,8 +89,40 @@ Plug 'majutsushi/tagbar'
 Plug 'lfv89/vim-interestingwords'
 
 " Code complete
-Plug 'mattn/emmet-vim'
-Plug 'mattn/webapi-vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" Code format
+Plug 'sbdchd/neoformat'
+
+" Static lint
+Plug 'w0rp/ale'
+
+" Quick comment: gc
+Plug 'tpope/vim-commentary'
+
+" 6. Integration
+" A git wrapper
+Plug 'tpope/vim-fugitive'
+
+" Shows a git diff in the sign column.
+Plug 'airblade/vim-gitgutter'
+
+" A git commit browser
+Plug 'junegunn/gv.vim'
+
+" 7. golang
+" Adds Go language support for Vim.
+" Code completion, Refactor, Jump, Formatter, Auto import
+" Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries' }
+
+" 8. python
+Plug 'python-mode/python-mode'
 
 " z. Others
 " Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
@@ -107,7 +140,7 @@ Plug 'mattn/webapi-vim'
 " Plug 'tpope/vim-sensible'
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Initialize plugin system. 
 " Automatically executes 'filetype plugin indent on' and 'syntax enable'.
@@ -116,9 +149,9 @@ call plug#end()
 " filetype plugin indent on   " ... and enable filetype detection
 " syntax enable
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       2. General settings                                  "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ===========================================================================
+"                       2. General settings                                  
+" ===========================================================================
 
 set nobackup            " Stop annoying backup file.
 set writebackup         " Backup file, and delete it after save sucessfully.
@@ -141,7 +174,7 @@ set smartindent         " Do smart autoindenting when starting a new line.
 set ruler
 set nonumber
 set showcmd
-set foldmethod=indent   " Lines with equal indent form a fold.
+set foldmethod=manual   " Lines with equal indent form a fold.
 set laststatus=0        " Never show extra status line below
 set showmode
 set noerrorbells        " No beeps
@@ -184,9 +217,9 @@ set shiftwidth=4    " One indent equals to 4 spaces (that also means one indent
                     " equals to one tab length.
 set smarttab        " Inserts blanks according to other places.
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"               3. Remap the keystroke and config the plugins.               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ===========================================================================
+"               3. Remap the keystroke and config the plugins.               
+" ===========================================================================
 
 let mapleader = ","
 
@@ -239,7 +272,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'r'
 
 " vim-easymotion
-nmap ff <Plug>(easymotion-ss)
+nmap ff <Plug>(easymotion-s2)
 
 " tag-bar
 nnoremap <leader>o :TagbarToggle<CR>
@@ -250,14 +283,12 @@ nnoremap <leader>f :Files .<CR>
 " deoplete.vim
 let g:deoplete#enable_at_startup = 1
 
-" emmet-vim
-let g:user_emmet_mode='inv'
-let g:user_emmet_leader_key='<C-e>'
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('$HOME/snippets_for_vim.json')), "\n"))
+" Set update time is 100ms.
+set updatetime=100
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           4. Vim scripts                                   "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ===========================================================================
+"                           4. Vim scripts                                   
+" ===========================================================================
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
