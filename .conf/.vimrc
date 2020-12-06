@@ -24,14 +24,17 @@ Plug 'sickill/vim-monokai'
 " A fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
 
+" Display thin vertical lines at each indentation level for code indented with
+" spaces.
 Plug 'yggdroot/indentline'
 
 " 2. File system explorer (directory hierarchies) associated.
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " A plugin of NERDTree showing git status flags.
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" Browse GitHub events (user dashboard, user/repo activity).
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " 3. Find files
@@ -167,8 +170,8 @@ nnoremap <leader>f :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 
 " Configurate vim-github-dashboard
-nnoremap <leader>d :GHDashboard
-nnoremap <leader>a :GHActivity
+" nnoremap <leader>d :GHDashboard
+" nnoremap <leader>a :GHActivity
 
 " Basic options for ctrlp
 let g:ctrlp_map = '<C-p>'
