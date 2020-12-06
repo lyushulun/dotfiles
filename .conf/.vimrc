@@ -34,15 +34,13 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 " A plugin of NERDTree showing git status flags.
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Browse GitHub events (user dashboard, user/repo activity).
-Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
-
 " 3. Find files
+" Ag [PATTERN]
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Fuzzy file, butter, mru, tag, etc finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " Quick find in a file.
 Plug 'easymotion/vim-easymotion'
@@ -66,24 +64,29 @@ Plug 'tpope/vim-commentary'
 
 " 5. Integration
 " A git wrapper
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " Shows a git diff in the sign column.
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " A git commit browser
-Plug 'junegunn/gv.vim'
+" Plug 'junegunn/gv.vim'
+
+" Browse GitHub events (user dashboard, user/repo activity).
+" :GHD! johnshulunlyu / :GHA! johshulunlyu / :GHA! johnshulunlyu/dotfiles
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 call plug#end()
 
 " ===========================================================================
 "                       2. General settings                                  
 " ===========================================================================
-
 set nobackup            " Stop annoying backup file.
 set writebackup         " Backup file, and delete it after save sucessfully.
 set swapfile            " Store the changes you've made to the buffer.
-set directory^=$HOME/.vim/tmp/swap//    " Aggregate all swap files in one place.
+set directory^=$HOME/.vim/tmp/swap//    
+                        " Aggregate all swap files in one place.
+
 set autoread            " Automatically read changed files.
                         " After back to buffer, you should :e .
 set autowrite           " Automatically save before :next, :make etc.
@@ -93,8 +96,10 @@ set encoding=utf-8      " Character encoding used inside Vim.
 set fileencodings=ucs-bom,utf-8,gb18030,default,latin1
                         " A list of character encodings is used to set the 
                         " fileencoding value by Vim when read a new file.
+ 
 set textwidth=0         " Set textwidth by hand.
-set fileformats=unix,dos    " unix, osx: LF; dos: CR LF; ox 9-: CR.
+set fileformats=unix,dos    
+                        " unix, osx: LF; dos: CR LF; ox 9-: CR.
 set autoindent
 set smartindent         " Do smart autoindenting when starting a new line.
 
@@ -110,7 +115,8 @@ set splitbelow          " Horizontal windows should split to bottom
 set nocursorcolumn      " Do not highlight column (speeds up highlighting)
 set nocursorline        " Do not highlight cursor (speeds up highlighting)
 set lazyredraw          " Wait to redraw
-set completeopt=menu,menuone    " Show popup menu, even if there is one entry
+set completeopt=menu,menuone    
+                        " Show popup menu, even if there is one entry
 set pumheight=10        " Completion window max size
 set ttyfast             " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2     " Indicate terminal type for mouse codes
@@ -142,7 +148,7 @@ set softtabstop=0   " Turn off this feature.
 set expandtab       " Use spaces instead of tab characters.
 set shiftwidth=4    " One indent equals to 4 spaces (that also means one indent
                     " equals to one tab length.
-set smarttab        " Inserts blanks according to other places.
+set smarttab        " Inserts blanks according to the context.
 
 " ===========================================================================
 "               3. Remap the keystroke and config the plugins.               
@@ -159,24 +165,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Configurate vim-plug
-let g:plug_window = "vertical topleft new"
-
 " NERDTree
 " Configurate NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
 let NERDTreeShowHidden=1
-
-" Configurate vim-github-dashboard
-" nnoremap <leader>d :GHDashboard
-" nnoremap <leader>a :GHActivity
-
-" Basic options for ctrlp
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'r'
 
 " vim-easymotion
 nmap ff <Plug>(easymotion-s2)
