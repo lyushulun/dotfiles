@@ -125,9 +125,9 @@ let mapleader=","
 
 " Save and Save&Quit quickly
 nnoremap <leader>w :w<CR>
-nnoremap <leader>wq :wq<CR>
+nnoremap <leader>q :wq<CR>
 inoremap <leader>w <ESC>:w<CR>
-inoremap <leader>wq <ESC>:wq<CR>
+inoremap <leader>q <ESC>:wq<CR>
 
 " Jump qickly among windows
 nnoremap <C-h> <C-w>h
