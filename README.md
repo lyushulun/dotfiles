@@ -6,7 +6,7 @@ Dotfiles 是用于配置 Unix, Linux, macOS 系统下软件的文件. 如 `.vimr
 
 ## Useful configurations of mine 我自己在用的配置文件
 
-- [用于全栈开发的 Vim 配置文件](.config/.vimrc)
+- [用于全栈开发的 Vim 配置文件: `.vimrc`](.config/.vimrc)
 - NeoVim
 
 ## 为什么要使用 GitHub 管理 Dotfiles
