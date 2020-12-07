@@ -1,18 +1,18 @@
-# Dotfile
+# Dotfile 配置文件
 
-## What are dotfiles?
+## 什么是配置文件
 
-Dotfiles are the customization files that are used to personalize your Linux or other Unix-based system. You can tell that a file is a dotfile because the name of the file will begin with a period–a dot! The period at the beginning of a filename or directory name indicates that it is a hidden file or directory.  This repository contains my personal dotfiles. They are stored here for convenience so that I may quickly access them on new machines or new installs. Also, others may find some of my configurations helpful in customizing their own dotfiles.
+Dotfiles 是用于配置 Unix, Linux, macOS 系统下软件的文件. 如 `.vimrc` 用于配置 Vim. `.zshrc` 用于配置 zsh.
 
-## Useful configurations of mine
+## Useful configurations of mine 我自己在用的配置文件
 
-* [Vim](.config/.vimrc)
-* NeoVim
+- [用于全栈开发的 Vim 配置文件](.config/.vimrc)
+- NeoVim
 
-## How to manage your own dotfiles
+## 为什么要使用 GitHub 管理 Dotfiles
 
-There are a hundred ways to manage your dotfiles. Personally, I use the **git bare repository method** for managing my dotfiles. Here is an article about this method of managing your dotfiles: [ https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/]( https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
+我们日常会经常更换开发环境, 如 SSH 远程登录到不同的服务器 (一般都是 Linux 操作系统环境, 如 CentOS, Debain). 此时, 我们可以从 GitHub 同步相关的 Dotfiles 到开发环境上.
 
 ## License
 
-The files and scripts in this repository are licensed under the MIT license, which is a very permissive license allowing you to use, modify, copy, distribute, sell, give away, etc. the software. In other words, do what you want with it. The only requirement with the MIT License is that the license and copyright notice must be provided with the software.
+使用 GPLv3 许可.
