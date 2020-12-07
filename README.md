@@ -4,7 +4,7 @@
 
 Dotfiles 是用于配置 Unix, Linux, macOS 系统下软件的文件. 如 `.vimrc` 用于配置 Vim. `.zshrc` 用于配置 zsh.
 
-## Useful configurations of mine 我自己在用的配置文件
+## 日常开发中, 笔者在用的配置文件
 
 - [用于全栈开发的 Vim 配置文件: `.vimrc`](.config/.vimrc)
 - NeoVim
