@@ -28,14 +28,13 @@ Plug 'morhetz/gruvbox'
 
 Plug 'mhinz/vim-startify'
 
+" Display vertical lines at each indentation level for code intended with spaces
 Plug 'yggdroot/indentline'
 
 " 2. Find files
-
-Plug 'ctrlpvim/ctrlp.vim'
-
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+" Plug 'airblade/vim-rooter'
 
 " 3. File explorer and outline
 
@@ -53,16 +52,16 @@ Plug 'lfv89/vim-interestingwords'
 
 Plug 'tpope/vim-commentary'
 
-" 3. Git associated
+" 5. Git associated
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
-" 4. JS dev
-" 5. Python dev
-" 6. Go dev
-" 7. PHP dev
+" 6. JS dev
+" 7. Python dev
+" 8. Go dev
+" 9. PHP dev
 
 call plug#end()
 
@@ -79,6 +78,10 @@ set noswapfile      " Don't use swapfiles for buffers
 set noundofile      " Don't use undofiles to save undo histories, and use
                     " `git log` to revision instead
 
+" 如果打开文件, 遇到乱码, 就需要手动设置编码
+" 不要使用 fileencoding 设置, 因为其仅用于设置保存文件时候, 使用的编码
+" 应当使用 :e ++enc=someencoding somefile 指定编码格式重新打开文件
+"
 set encoding=utf-8  " Character encoding used inside Vim
 set fileencodings=ucs-bom,utf-8,gb18030,default,latin1
                     " Character encodings considered when editing an new file
@@ -114,7 +117,10 @@ colorscheme gruvbox
 " Use 4 spaces to insert one <TAB> or indent
 set tabstop=4       " Number of spaces that one <TAB> counts for
 set shiftwidth=4    " Number of spaces that one indent counts for
-set expandtab       " Use spaces to insert one <TAB>
+set expandtab       " Use spaces to insert one <TAB> instead of <TAB> character
+
+set backspace=indent,eol,start
+                    " Make the backspace more powerful
 
 
 " ============================================================================
@@ -134,6 +140,18 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
+
+" Plugin mappings
+" 2. Find files
+" Change the default mapping and the default command to invoke CtrlP
+
+" 3. File explorer and outlines
+" 4. Edit efficiently
+" 5. Git associated
+" 6. JS dev
+" 7. Python dev
+" 8. Go dev
+" 9. PHP dev
 
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
