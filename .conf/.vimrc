@@ -32,30 +32,25 @@ Plug 'mhinz/vim-startify'
 Plug 'yggdroot/indentline'
 
 " 2. Find files
-Plug '/usr/local/opt/fzf'
+" Useful fuzzy finder.
+Plug '/usr/local/opt/fzf'   " You need install fzf externally
 Plug 'junegunn/fzf.vim'
-" Plug 'airblade/vim-rooter'
+
+" Change the working directory to the project root
+Plug 'airblade/vim-rooter'
 
 " 3. File explorer and outline
-
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-
 Plug 'majutsushi/tagbar'
 
 " 4. Edit efficiently
-
 Plug 'easymotion/vim-easymotion'
-
 Plug 'tpope/vim-surround'
-
 Plug 'lfv89/vim-interestingwords'
-
 Plug 'tpope/vim-commentary'
 
 " 5. Git associated
-
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " 6. JS dev
@@ -143,7 +138,19 @@ nnoremap <C-k> <C-w>k
 
 " Plugin mappings
 " 2. Find files
-" Change the default mapping and the default command to invoke CtrlP
+" airblade/vim-rooter
+" Which buffers trigger Rooter: everything (default)
+let g:rooter_targets = '/,*'
+
+" How to identify a root directory
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
+
+" Non-project files: don't change directory (default)
+let g:rooter_change_directory_for_non_project_files = ''
+
+" Running manually: make Rooter start in manual mode
+let g:rooter_manual_only = 1
+
 
 " 3. File explorer and outlines
 " 4. Edit efficiently
