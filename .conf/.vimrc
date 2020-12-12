@@ -153,6 +153,7 @@ let g:rooter_manual_only = 1
 
 
 " 3. File explorer and outlines
+nnoremap <leader>e :Files<CR>
 " 4. Edit efficiently
 " 5. Git associated
 " 6. JS dev
